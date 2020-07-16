@@ -1,112 +1,138 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
+import Register from "./components/register/Register";
 import LandingPage from "./components/LandingPage";
+import LandingPageHeader from "./components/LandingPageHeader";
+import SearchPageResults from "./components/searchPageResults/SearchPageResults";
+import AddDessert from "./components/addDessert/AddDessert"
 import {
-  Modal,
-  //   Card,
-  Button,
-  Navbar,
-  //   Row,
-  //   Container,
-  //   Col,
-  Form,
-  // FormControl,
-  //   Jumbotron,
+	Modal,
+	//   Card,
+	Button,
+	Navbar,
+	//   Row,
+	//   Container,
+	//   Col,
+	Form,
+	// FormControl,
+	//   Jumbotron,
 } from "react-bootstrap";
 // import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
-  const [open, setOpen] = useState(false);
-  const [user, setUser] = useState(null);
-  // const [credentials, setCredentials] = useState({ email: "", password: "" });
-  const [loaded, setLoaded] = useState(false);
+	const [open, setOpen] = useState(false);
+	const [user, setUser] = useState(null);
+	// const [credentials, setCredentials] = useState({ email: "", password: "" });
+	const [loaded, setLoaded] = useState(false);
 
-  useEffect(() => {
-    fetchUser();
-  }, []);
+	useEffect(() => {
+		fetchUser();
+	}, []);
 
-  const fetchUser = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      setLoaded(true);
-      return;
-    }
-    const res = await fetch(`http://localhost:5000/users/me`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    if (res.ok) {
-      const data = await res.json();
-      setUser(data.data); // .data is user object from backend
-    } else {
-      localStorage.removeItem("token");
-    }
+	const fetchUser = async () => {
+		const token = localStorage.getItem("token");
+		if (!token) {
+			setLoaded(true);
+			return;
+		}
+		const res = await fetch(`http://localhost:5000/users/me`, {
+			headers: {
+				authorization: `Bearer ${token}`,
+				"Content-Type": "application/json",
+			},
+		});
+		if (res.ok) {
+			const data = await res.json();
+			setUser(data.data); // .data is user object from backend
+		} else {
+			localStorage.removeItem("token");
+		}
 
-    setLoaded(true);
-  };
+		setLoaded(true);
+	};
 
-  if (!loaded) return <h1>Loading...</h1>;
+	if (!loaded) return <h1>Loading...</h1>;
 
-  return (
-    <>
-      <nav id="navigation">
-        <Navbar bg="dark" variant="dark" className="navbar">
-          <div className="container">
-            <Navbar.Brand href="/">
-              <img
-                alt=""
-                src="/logo.png"
-                width="30"
-                height="auto"
-                className="d-inline-block align-center"
-              />{" "}
-              <span style={{ paddingLeft: "10px" }}>[SDD Logo]</span>
-              <span>Desserts</span>
-              <span>Sellers</span>
-              <span>Map</span>
-              <span>Write a Review</span>
-            </Navbar.Brand>
-            <Form inline>
-              <Button variant="danger" onClick={() => setOpen(!open)}>
-                Login
-              </Button>
-              <Button variant="outline-primary" href="/add">
-                Add your baked good
-              </Button>
-            </Form>
-          </div>
-        </Navbar>
-      </nav>
+	return (
+		<>
+			<nav id="navigation">
+				<Navbar bg="dark" variant="dark" className="navbar">
+					<div className="container">
+						<Navbar.Brand href="/">
+							<img
+								alt=""
+								src="/logo.png"
+								width="30"
+								height="auto"
+								className="d-inline-block align-center"
+							/>{" "}
+							<span style={{ paddingLeft: "10px" }}>
+								[SDD Logo]
+							</span>
+							<span className="navbar-link">Desserts</span>
+							<span className="navbar-link">Sellers</span>
+							<span className="navbar-link">Map</span>
+							<span className="navbar-link">Write a Review</span>
+							<span className="navbar-link"><Link to="/desserts/add">Add a Dessert</Link></span>
+						</Navbar.Brand>
+						<Form inline>
+							<Button
+								variant="danger"
+								onClick={() => setOpen(!open)}
+							>
+								Login
+							</Button>
+							<Button variant="warning">
+								<Link to="/register">Register</Link>
+							</Button>
+							<Button variant="outline-primary" href="/add">
+								Add your baked good
+							</Button>
+						</Form>
+					</div>
+				</Navbar>
+			</nav>
 
-      <Router>
-        <Modal show={open} onHide={() => setOpen(!open)}>
-          <Login setUser={setUser} />
-        </Modal>
+			<Router>
+				<Modal show={open} onHide={() => setOpen(!open)}>
+					<Login setUser={setUser} />
+				</Modal>
 
-        <Switch>
-          <Route path="/" exact>
-            <div className="landing">
-              <LandingPage />
-            </div>
-          </Route>
+				<Switch>
+					<Route path="/" exact>
+						<div className="landing">
+							<LandingPageHeader />
+							<LandingPage />
+						</div>
+					</Route>
 
-          <Route path="/desserts">DessertsList</Route>
+					<Route path="/register" exact>
+						<Register />
+					</Route>
 
-          <Route path="/sellers">SellersList</Route>
+					<Route path="/search">
+						<SearchPageResults />
+					</Route>
 
-          <Route path="/map">Map</Route>
+					<Route path="/desserts">DessertsList</Route>
 
-          <Route path="/reviews">ReviewsList</Route>
+					<Route path="/desserts/add">
+						<AddDessert />
+					</Route>
 
-          <Route path="/me">UserProfile</Route>
-        </Switch>
-      </Router>
-    </>
-  );
+					<Route path="/sellers">SellersList</Route>
+
+					<Route path="/map">Map</Route>
+
+					<Route path="/reviews">ReviewsList</Route>
+
+					<Route path="/me">UserProfile</Route>
+				</Switch>
+			</Router>
+		</>
+	);
 }
 
 export default App;

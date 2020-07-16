@@ -30,7 +30,7 @@ const Login = (props) => {
       console.log("Need email and password");
       return;
     }
-    const res = await fetch(`http://localhost:5000/auth/login`, {
+    const res = await fetch(`http://localhost:5000/login`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
