@@ -4,9 +4,9 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter as Router } from "react-router-dom";
+import store from "./redux/store";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-// styles
+
 import "./assets/css/bootstrap.min.css";
 import "./assets/css/now-ui-kit.css";
 // import "assets/css/now-ui-kit.min.css";
@@ -15,9 +15,12 @@ import "./assets/css/now-ui-kit.css";
 
 ReactDOM.render(
 	// <React.StrictMode>
-	<Router>
-		<App />
-	</Router>,
+	// <Provider store={store}>
+	<Provider store={store}>
+		<Router>
+			<App />
+		</Router>
+	</Provider>,
 	// </React.StrictMode>,
 	document.getElementById("root")
 );

@@ -1,0 +1,23 @@
+.dessertdetails-name{
+    text-align: center;
+}
+
+.dessertdetails-tag{
+    color: white;
+    text-decoration: none;
+}
+
+.dessertdetails-tag:hover{
+    color: white;
+    text-decoration: none;
+}
+
+/* .dessertdetails-container{ */
+.infoPage{
+    /* background-image: linear-gradient(to bottom right, #3a9dcc, #0d3f67); */
+    /* border: 1px solid orange; */
+}
+
+.dessertdetails-reviewform{
+    background-color: lightgray;
+}

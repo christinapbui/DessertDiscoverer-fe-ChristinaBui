@@ -4,7 +4,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,12 +17,71 @@
   color: #61dafb;
 }
 
+.cardImg:hover{
+  cursor: pointer;
+}
+
+.dessertcard-cardbody{
+  padding-top: 0px;
+}
+
+.dessertcard-cardtitle{
+  padding-top: -10px;
+}
+
+.dessertcard-description{
+  font-size: 16px;
+}
+
+.dessertcard-name{
+  margin-top: -10px;
+  text-decoration: none;
+  /* line-height: 1em; */
+}
+
+.dessertcard-name:hover{
+  /* margin-top: -10px; */
+  /* font-weight:bold; */
+  text-decoration: none;
+  text-shadow:0px 0px 1px #f96332;
+}
+
+.dessertcard-seller{
+  color: #2ca8ff;
+  text-decoration: none;
+}
+
+.dessertcard-seller:hover{
+  color: #2ca8ff;
+  font-weight:bold;
+  text-decoration: none;
+  text-shadow:0px 0px 1px #2ca8ff;
+}
+
+.imgBox { 
+  /* border-radius: calc(1rem - 1px); */
+  display: inline-block; 
+  overflow: hidden; 
+}
+.imgBox img {
+  display: block; 
+  transition: .4s ease-in-out;
+}
+.imgBox:hover img {
+  transform: scale(1.1);
+}
+
+.navbar{
+  margin-bottom: 0px!important;
+}
+
 .navbar-link{
   padding-left: 10px;
 }
 
 .jumbo {
-  background-image: url("./assets/img/cupcakes-1-big.jpg");
+  /* background-image: url("./assets/img/cupcakes-1-big.jpg"); */
+  background-image: url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F09%2Fdessert-cities-FT-BLOG0919.jpg");
   height: 500px; 
   background-position: top; 
   background-repeat: no-repeat; 
@@ -33,6 +92,10 @@
   max-width: 100%;
   height: auto;
 }
+.jumbo-landing-best-desserts{
+  background-color: white;
+}
+
 /* .jumbo-main-text {
   position: absolute;
   align-items: center;
@@ -45,7 +108,18 @@
   padding: 20px;
 } */
 
+.login-modal{
+  text-align: center;
+}
+/* 
+.page-header-image{
+  top: -1rem;
+  width: 110vw;
+  height: auto;
+} */
+
 .page-header {
+  /* min-height: 70vh; */
   min-height: 100vh;
   max-height: 999px;
   padding: 0;
@@ -57,7 +131,7 @@
     text-align: center;
     margin-bottom: 50px; }
   .page-header.page-header-small {
-    min-height: 60vh;
+    min-height: 100vh;
     max-height: 440px; }
   .page-header:before {
     background-color: rgba(0, 0, 0, 0.3); }
@@ -66,7 +140,7 @@
     padding-top: 12vh;
     padding-bottom: 40px; }
   .page-header .page-header-image {
-    position: absolute;
+    /* position: absolute; */
     background-size: cover;
     background-position: center center;
     width: 100%;
@@ -105,4 +179,9 @@
     display: block;
     left: 0;
     top: 0;
-    content: ""; }
+    content: ""; 
+  }
+
+.showalldesserts-container{
+  margin-top: 30px;
+}
