@@ -35,9 +35,9 @@ const ShowAllReviews = () => {
 	}, []);
 
 	return (
-		<Container>
-			<h1>Show All REVIEWS Here!!!!</h1>
-			<Button>Sort by Newest (newest to oldest)</Button> <br />
+		<Container style={{ marginTop: "30px", textAlign: "center" }}>
+			<h1>List of Reviews</h1>
+			{/* <Button>Sort by Newest (newest to oldest)</Button> <br /> */}
 			{reviewList.map((item) => (
 				<ReviewCard review={item} key={item.id} />
 			))}

@@ -12,7 +12,7 @@ import DessertCard from "../components/DessertCard";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import AddDessert from "./addDessert/AddDessert";
 import MainSearchBar from "../components/MainSearchBar";
-import { BACKEND_URL } from "../appConstant";
+import PaginationLink from "../components/PaginationLink";
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -21,21 +21,23 @@ function useQuery() {
 const ShowAllDesserts = (props) => {
 	let query = useQuery();
 	let [dessertList, setDessertList] = useState([]);
-
+	const [pageNum, setPageNum] = useState(1);
+	const [maxPageNum, setMaxPageNum] = useState(1);
 	let dispatch = useDispatch();
-	let [page, setPage] = useState(1);
-	let [totalResult, setTotalResult] = useState(0);
+	// let [page, setPage] = useState(1);
+	// let [totalResult, setTotalResult] = useState(0);
 
 	const getDesserts = async () => {
 		let data = await fetch(`${process.env.REACT_APP_BACKEND_URL}desserts`);
 		let results = await data.json();
 		console.log("this is the dessert list", results);
 		setDessertList(results.data);
+		setMaxPageNum(parseInt(results.maxPageNum));
 	};
 
 	useEffect(() => {
 		getDesserts();
-	}, []);
+	}, [pageNum]);
 
 	const sortByPriceHighLow = () => {
 		let tempList = [...dessertList];
@@ -47,6 +49,14 @@ const ShowAllDesserts = (props) => {
 		let tempList = [...dessertList];
 		const sortedLowHigh = tempList.sort((a, b) => a.price - b.price);
 		setDessertList(sortedLowHigh);
+	};
+
+	const goNextPage = () => {
+		setPageNum(pageNum + 1);
+	};
+
+	const goPrevPage = () => {
+		setPageNum(pageNum - 1);
 	};
 
 	return (
@@ -85,6 +95,28 @@ const ShowAllDesserts = (props) => {
 							</Col>
 						))}
 				</Row>
+				<section style={{ marginBottom: "50px", marginTop: "50px" }}>
+					<table style={{ width: "100%" }}>
+						<tr>
+							<td style={{ textAlign: "center", width: "300px" }}>
+								<PaginationLink
+									disabled={pageNum === 1}
+									handleClick={goPrevPage}
+								>
+									Previous Page
+								</PaginationLink>
+							</td>
+							<td style={{ textAlign: "center", width: "300px" }}>
+								<PaginationLink
+									disabled={pageNum === maxPageNum}
+									handleClick={goNextPage}
+								>
+									Next Page
+								</PaginationLink>
+							</td>
+						</tr>
+					</table>
+				</section>
 			</Container>
 		</>
 	);

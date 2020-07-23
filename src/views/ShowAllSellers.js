@@ -8,11 +8,9 @@ import {
 	Link,
 } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import DessertCard from "../../components/DessertCard";
+import SellerCard from "../components/SellerCard";
 import { Container, Button } from "react-bootstrap";
-import AddDessert from "../addDessert/AddDessert";
-import MainSearchBar from "../../components/MainSearchBar";
-import { BACKEND_URL } from "../../appConstant";
+import MainSearchBar from "../components/MainSearchBar";
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -20,30 +18,29 @@ function useQuery() {
 
 const ShowAllSellers = (props) => {
 	let query = useQuery();
-	let [dessertList, setDessertList] = useState([]);
+	let [sellerList, setSellerList] = useState([]);
 	let array = [];
 	let dispatch = useDispatch();
 
-	const getDesserts = async () => {
-		let data = await fetch(`${process.env.REACT_APP_BACKEND_URL}desserts`);
+	const getSellers = async () => {
+		let data = await fetch(`${process.env.REACT_APP_BACKEND_URL}users`);
 		let results = await data.json();
-
-		setDessertList(results.data);
-		// console.log()
+		setSellerList(results.sellerList);
+		console.log("this is the sellers list: ", results.sellerList);
 	};
 
 	useEffect(() => {
-		getDesserts();
+		getSellers();
 	}, []);
 
 	return (
 		<>
-			<Container>
-				<h1>Show All Sellers Here!!!!</h1>
+			<Container style={{ marginTop: "30px", textAlign: "center" }}>
+				<h1>List of Sellers</h1>
 				<br />
-				{dessertList &&
-					dessertList.map((item) => (
-						<DessertCard dessert={item} key={item.id} />
+				{sellerList &&
+					sellerList.map((item) => (
+						<SellerCard seller={item} key={item.id} />
 					))}
 			</Container>
 		</>

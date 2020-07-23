@@ -9,22 +9,21 @@ import {
 } from "react-router-dom";
 import "./App.css";
 import Login from "./components/Login";
+import LoginPage from "./views/LoginPage";
 import Register from "./views/register/Register";
 import LandingPage from "./components/LandingPage";
 import SearchPageResults from "./views/searchPageResults/SearchPageResults";
 import AddDessert from "./views/addDessert/AddDessert";
 import EditDessert from "./views/addDessert/EditDessert";
 import DessertDetails from "./views/dessertDetails/DessertDetails";
-import AddReview from "./components/AddReviewForm";
-import ProtectedRoute from "./utils/ProtectedRoute";
 import ShowAllDesserts from "./views/ShowAllDesserts";
 import ShowAllReviews from "./views/showAllReviews/ShowAllReviews";
-import ShowAllSellers from "./views/showAllSellers/ShowAllSellers";
-import SingleSellerProfile from "./views/singleSellerProfile/SingleSellerProfile";
+import ShowAllSellers from "./views/ShowAllSellers";
+import SingleSellerProfile from "./views/SingleSellerProfile";
 import FourOhFourPage from "./views/FourOhFourPage";
 import { useSelector, useDispatch } from "react-redux";
-import { BACKEND_URL } from "./appConstant";
-import logo from "./assets/img/dessert-logo-1.png";
+import logo from "./assets/img/sdd-logo.png";
+import Footer from "./components/Footer";
 
 import {
 	Modal,
@@ -77,10 +76,11 @@ function App() {
 	};
 
 	const ProtectedRoute = (props) => {
-		if (user.isAuthenticated === true) {
-			return <Route {...props} />;
-		} else {
+		const token = localStorage.getItem("token");
+		if (!token) {
 			return <Redirect to="/login" />;
+		} else {
+			return <Route {...props} />;
 		}
 	};
 
@@ -124,7 +124,7 @@ function App() {
 								<img
 									alt=""
 									src={logo}
-									width="30"
+									width="100"
 									height="auto"
 									className="d-inline-block align-center"
 								/>
@@ -141,9 +141,9 @@ function App() {
 							<span className="navbar-link">
 								<Link to="/reviews">Reviews</Link>
 							</span>
-							{/* <span className="navbar-link">
+							<span className="navbar-link">
 								<Link to="/map">Map</Link>
-							</span> */}
+							</span>
 							{/* <span className="navbar-link"><Link to="/add-review">Write a Review</Link></span> */}
 							{/* <span className="navbar-link">
 								<Link to="/add-dessert">Add a Dessert</Link>
@@ -151,12 +151,17 @@ function App() {
 						</Navbar.Brand>
 						<Form inline>
 							{localStorage.getItem("user") ? (
-								<Button
-									variant="secondary"
-									onClick={() => logout()}
-								>
-									Logout
-								</Button>
+								<>
+									<Button variant="warning">
+										<Link to="/profile">Profile</Link>
+									</Button>
+									<Button
+										variant="secondary"
+										onClick={() => logout()}
+									>
+										Logout
+									</Button>
+								</>
 							) : (
 								<>
 									<Button
@@ -192,6 +197,10 @@ function App() {
 					</div>
 				</Route>
 
+				<Route path="/login" exact>
+					<LoginPage />
+				</Route>
+
 				<Route path="/register" exact>
 					<Register />
 				</Route>
@@ -204,17 +213,25 @@ function App() {
 					<ShowAllDesserts />
 				</Route>
 
-				<Route exact path="/add-dessert" component={AddDessert}>
+				<ProtectedRoute
+					exact
+					path="/add-dessert"
+					component={AddDessert}
+				>
 					<AddDessert />
-				</Route>
+				</ProtectedRoute>
 
 				<Route exact path="/desserts/:id" component={DessertDetails} />
 
-				<Route
+				<ProtectedRoute
 					exact
 					path="/desserts/:id/edit"
 					component={EditDessert}
 				/>
+
+				<ProtectedRoute exact path="/profile">
+					<SingleSellerProfile />
+				</ProtectedRoute>
 
 				<Route exact path="/sellers">
 					<ShowAllSellers />
@@ -239,6 +256,7 @@ function App() {
 				<Route path="/me">UserProfile</Route>
 				<Route path="*" component={FourOhFourPage} />
 			</Switch>
+			<Footer />
 		</>
 	);
 }

@@ -5,7 +5,7 @@ import FeaturedGoodies from "./FeaturedGoodies";
 import FeaturedSellers from "./FeaturedSellers";
 import LandingBestDesserts from "./LandingBestDesserts";
 import LandingPageHeader from "./LandingPageHeader";
-import Footer from "./Footer";
+import LandingParallex from "./LandingParallex";
 // import LandingBestDesserts from "./components/LandingBestDesserts";
 
 const LandingPage = () => {
@@ -14,9 +14,9 @@ const LandingPage = () => {
 			<div>
 				<LandingPageHeader />
 				<LandingBestDesserts />
-				<Jumbotron fluid className="jumbo">
+				<LandingParallex />
+				{/* <Jumbotron fluid className="jumbo">
 					<Container style={{ marginTop: "10rem" }}>
-						{/* <img src={cupcake} className="jumbo-img" alt="cupcakes" /> */}
 						<div
 							style={{
 								textShadow: "1px 1px 1px rgba(0, 0, 0, 0.5)",
@@ -32,11 +32,10 @@ const LandingPage = () => {
 							</p>
 						</div>
 					</Container>
-				</Jumbotron>
+				</Jumbotron> */}
 			</div>
-			<FeaturedGoodies />
-			<FeaturedSellers />
-			<Footer />
+			{/* <FeaturedGoodies />
+			<FeaturedSellers /> */}
 		</>
 	);
 };

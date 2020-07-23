@@ -7,7 +7,6 @@ import ReviewCard from "../../components/ReviewCard";
 import EditDessert from "../addDessert/EditDessert";
 import "./DessertDetails.css";
 import NumberFormat from "react-number-format";
-import { BACKEND_URL } from "../../appConstant";
 
 const DessertDetails = ({ text, type, placeholder, children, ...props }) => {
 	const [details, setDetails] = useState(null);
@@ -21,7 +20,7 @@ const DessertDetails = ({ text, type, placeholder, children, ...props }) => {
 				`${process.env.REACT_APP_BACKEND_URL}desserts/` + id
 			);
 			const resData = await data.json();
-			console.log("dessert details: ", resData);
+			// console.log("dessert details: ", resData);
 			let singleDessert = resData.singleDessert;
 			singleDessert.reviews = resData.reviews;
 			console.log("Dessert detail", singleDessert);
@@ -143,18 +142,8 @@ const SingleDessert = ({
 										}}
 									>
 										<tr style={{ color: "#777777" }}>
-											<td style={{ width: "33%" }}>
+											<td style={{ width: "66%" }}>
 												<i class="fas fa-tags"></i>{" "}
-											</td>
-											<td style={{ width: "33%" }}>
-												<i class="far fa-star"></i>{" "}
-											</td>
-											{/* <td style={{ width: "33%" }}>
-											<i class="far fa-comment"></i>
-										</td> */}
-										</tr>
-										<tr style={{ color: "#777777" }}>
-											<td>
 												Tags:{" "}
 												{tags &&
 													tags.map((e) => (
@@ -169,7 +158,27 @@ const SingleDessert = ({
 														</Badge>
 													))}
 											</td>
-											<td>Average Rating: {rating}</td>
+											{/* <td style={{ width: "33%" }}>
+												<i class="far fa-star"></i>{" "}
+											</td> */}
+										</tr>
+										<tr style={{ color: "#777777" }}>
+											{/* <td>
+												Tags:{" "}
+												{tags &&
+													tags.map((e) => (
+														<Badge color="info">
+															<Link
+																to={`/?tag=${e._id}`}
+																className="dessertdetails-tag"
+															>
+																{e.tag}
+															</Link>
+															{"  "}
+														</Badge>
+													))}
+											</td> */}
+											{/* <td>Average Rating: {rating}</td> */}
 										</tr>
 									</table>
 								</Col>

@@ -80,10 +80,10 @@ const DessertCard = (props) => {
 							/>{" "}
 							VND
 						</h6>
-						<br />
+						{/* <br />
 						{props.dessert.tags.map((item) => (
 							<Badge variant="info">{item.tag}</Badge>
-						))}
+						))} */}
 					</Card.Text>
 					<Button variant="primary" onClick={() => dessertDetails()}>
 						Details please!

@@ -11,8 +11,9 @@ import {
 } from "reactstrap";
 // import { useHistory } from "react-router-dom";
 import "../App.css";
+import moment from "moment";
 
-const SellerCard = (props) => {
+const ReviewCardListAllReviews = (props) => {
 	// let history = useHistory();
 
 	// const reviewDetails = () => {
@@ -34,16 +35,18 @@ const SellerCard = (props) => {
 				<CardBody>
 					<CardTitle className="reviewcard-title">
 						<h4>
-							<strong>{props.seller.displayName}</strong>
+							<strong>{props.review.title}</strong>
 						</h4>
 					</CardTitle>
-					{/* <CardSubtitle className="mb-2 text-muted">
+					<CardSubtitle className="mb-2 text-muted">
 						<i class="fas fa-user"></i>{" "}
 						<strong>
 							{props.review.user
 								? props.review.user.displayName
 								: "unknown"}
-						</strong>{" "}
+						</strong>
+						's review for ((dessert here)) on{" "}
+						{moment(props.review.createdAt).format("LLL")}
 					</CardSubtitle>
 					<CardText>
 						<p style={{ fontSize: "14px" }}>{props.review.body}</p>
@@ -59,7 +62,7 @@ const SellerCard = (props) => {
 						>
 							Rating: {props.review.rating}
 						</h6>
-					</CardText> */}
+					</CardText>
 				</CardBody>
 			</Card>
 			{""}
@@ -67,4 +70,4 @@ const SellerCard = (props) => {
 	);
 };
 
-export default SellerCard;
+export default ReviewCardListAllReviews;

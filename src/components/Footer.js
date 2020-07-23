@@ -14,19 +14,23 @@ function Footer() {
 					<nav>
 						<ul>
 							<li>
-								<a href="#" target="_blank">
-									About Us
+								<a
+									href="https://www.coderschool.vn"
+									target="_blank"
+								>
+									CoderSchool
 								</a>
 							</li>
-							<li>
+							{/* <li>
 								<a href="#" target="_blank">
 									Blog
 								</a>
-							</li>
+							</li> */}
 						</ul>
 					</nav>
 					<div className="copyright" id="copyright">
-						© {new Date().getFullYear()}, Christina Bui.
+						© {new Date().getFullYear()}, Christina Bui. This
+						website was created as part of a CoderSchool Project.
 					</div>
 				</Container>
 			</footer>

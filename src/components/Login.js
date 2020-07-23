@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Input } from "reactstrap";
-import { BACKEND_URL } from "../appConstant";
 
 const Login = (props) => {
 	const history = useHistory();
@@ -34,7 +33,7 @@ const Login = (props) => {
 			return;
 		}
 		const res = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}user/login`,
+			`${process.env.REACT_APP_BACKEND_URL}users/login`,
 			{
 				method: "POST",
 				headers: {

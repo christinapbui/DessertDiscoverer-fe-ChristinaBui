@@ -102,9 +102,8 @@
 .navbar-link{
   padding-left: 10px;
 }
-
-.jumbo {
   /* background-image: url("./assets/img/cupcakes-1-big.jpg"); */
+/* .jumbo {
   background-image: url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F09%2Fdessert-cities-FT-BLOG0919.jpg");
   height: 500px; 
   background-position: top; 
@@ -113,11 +112,12 @@
   color: white;
 }
 .jumbo-img {
-  max-width: 100%;
   height: auto;
-}
+} */
 .jumbo-landing-best-desserts{
+  margin-top: 50px;
   background-color: white;
+  height: 90vh;
 }
 
 /* .jumbo-main-text {
@@ -131,6 +131,12 @@
   font-size: 36px;
   padding: 20px;
 } */
+
+.landingparallex-maintext{
+  /* padding-top: 50px;
+  text-align: center;
+  color: white; */
+}
 
 .login-modal{
   text-align: center;
@@ -205,6 +211,18 @@
     top: 0;
     content: ""; 
   }
+
+.parallax {
+  background-image: url("https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2019%2F09%2Fdessert-cities-FT-BLOG0919.jpg");
+  height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 150px;
+  text-align: center;
+  color: white;
+}
 
 .reviewcard-card.noshadow{
   -webkit-box-shadow: none;

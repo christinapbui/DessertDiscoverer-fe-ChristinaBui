@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Container, Row, Col, Badge, Button } from "react-bootstrap";
-import AddReviewForm from "../../components/AddReviewForm";
-import ReviewCard from "../../components/ReviewCard";
+import AddReviewForm from "../components/AddReviewForm";
+import ReviewCard from "../components/ReviewCard";
 
 const SellerProfile = ({ text, type, placeholder, children, ...props }) => {
 	const [details, setDetails] = useState(null);

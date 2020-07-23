@@ -10,11 +10,11 @@ const LandingBestDesserts = () => {
 		<>
 			<div
 				// style="background:transparent !important"
-				class="jumbotron jumbo-landing-best-desserts"
+				class="jumbo-landing-best-desserts"
 			>
 				<Container
 					style={{
-						marginTop: "1rem",
+						// marginTop: "1rem",
 						textAlign: "center",
 					}}
 				>
@@ -33,13 +33,13 @@ const LandingBestDesserts = () => {
 									}}
 								></CardImg>
 								<CardBody>
-									<blockquote className="blockquote blockquote-primary mb-0">
-										<CardText>
-											<Link to="/search/?q=cookies">
-												<h3>Cookies</h3>
-											</Link>
-										</CardText>
-									</blockquote>
+									{/* <blockquote className="blockquote blockquote-primary mb-0"> */}
+									<CardText style={{ marginBottom: "-15px" }}>
+										<Link to="/search/?q=cookies">
+											<h3>Cookies</h3>
+										</Link>
+									</CardText>
+									{/* </blockquote> */}
 								</CardBody>
 							</Card>
 						</Col>
@@ -55,7 +55,7 @@ const LandingBestDesserts = () => {
 									}}
 								></CardImg>
 								<CardBody>
-									<CardText>
+									<CardText style={{ marginBottom: "-15px" }}>
 										<Link to="/search/?q=cake">
 											<h3>Cakes</h3>
 										</Link>
@@ -75,7 +75,7 @@ const LandingBestDesserts = () => {
 									}}
 								></CardImg>
 								<CardBody>
-									<CardText>
+									<CardText style={{ marginBottom: "-15px" }}>
 										<Link to="/search/?q=bread">
 											<h3>Bread</h3>
 										</Link>
