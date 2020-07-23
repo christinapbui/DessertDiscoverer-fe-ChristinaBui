@@ -21,7 +21,7 @@ function useQuery() {
 const ShowAllDesserts = (props) => {
 	let query = useQuery();
 	let [dessertList, setDessertList] = useState([]);
-	let array = [];
+
 	let dispatch = useDispatch();
 	let [page, setPage] = useState(1);
 	let [totalResult, setTotalResult] = useState(0);
@@ -34,10 +34,8 @@ const ShowAllDesserts = (props) => {
 	};
 
 	useEffect(() => {
-		if (dessertList.length === 0) {
-			getDesserts();
-		}
-	}, [dessertList]);
+		getDesserts();
+	}, []);
 
 	const sortByPriceHighLow = () => {
 		let tempList = [...dessertList];
