@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Container, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { Input } from "reactstrap";
+import { BACKEND_URL } from "../appConstant";
 
 const Login = (props) => {
 	const history = useHistory();
@@ -12,7 +13,7 @@ const Login = (props) => {
 	// 	if (data && data.accessToken) {
 	// 		console.log(data.accessToken);
 	// 		const res = await fetch(
-	// 			`http://localhost:5000/auth/login/facebook?token=${data.accessToken}`
+	// 			`${BACKEND_URL}auth/login/facebook?token=${data.accessToken}`
 	// 		);
 	// 		if (res.ok) {
 	// 			const data2 = await res.json();
@@ -32,7 +33,7 @@ const Login = (props) => {
 			console.log("Need email and password");
 			return;
 		}
-		const res = await fetch(`http://localhost:5000/user/login`, {
+		const res = await fetch(`${BACKEND_URL}user/login`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/json",

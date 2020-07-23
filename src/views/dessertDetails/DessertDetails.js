@@ -6,6 +6,8 @@ import AddReviewForm from "../../components/AddReviewForm";
 import ReviewCard from "../../components/ReviewCard";
 import EditDessert from "../addDessert/EditDessert";
 import "./DessertDetails.css";
+import NumberFormat from "react-number-format";
+import { BACKEND_URL } from "../../appConstant";
 
 const DessertDetails = ({ text, type, placeholder, children, ...props }) => {
 	const [details, setDetails] = useState(null);
@@ -15,10 +17,13 @@ const DessertDetails = ({ text, type, placeholder, children, ...props }) => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const data = await fetch("http://localhost:5000/desserts/" + id);
-			const details = await data.json();
-			console.log("dessert details: ", details);
-			setDetails(details);
+			const data = await fetch(`${BACKEND_URL}desserts/` + id);
+			const resData = await data.json();
+			console.log("dessert details: ", resData);
+			let singleDessert = resData.singleDessert;
+			singleDessert.reviews = resData.reviews;
+			console.log("Dessert detail", singleDessert);
+			setDetails(singleDessert);
 		}
 		fetchData();
 	}, []);
@@ -72,10 +77,14 @@ const SingleDessert = ({
 						<Container className="dessertdetails-container">
 							<h1 className="dessertdetails-name">{name}</h1>
 							<Row xl="2" lg="2" md="1" sm="1" xs="1">
-								<Col xl={4}>
+								<Col
+									xl={4}
+									className="dessertdetails-picture-col"
+								>
 									<img
 										alt="..."
 										src={pictureUrl}
+										className="dessertdetails-picture"
 										style={{
 											height: "18rem",
 											maxWidth: "18rem",
@@ -112,7 +121,15 @@ const SingleDessert = ({
 							<Row sm="2" xs="1" style={{ marginTop: "20px" }}>
 								<Col md={4}>
 									<div className="justify-content-center">
-										<h5>Price: {price} VND</h5>
+										<h5>
+											Price:{" "}
+											<NumberFormat
+												value={price}
+												displayType={"text"}
+												thousandSeparator={true}
+											/>{" "}
+											VND
+										</h5>
 									</div>
 								</Col>
 								<Col md={8}>
@@ -125,7 +142,7 @@ const SingleDessert = ({
 									>
 										<tr style={{ color: "#777777" }}>
 											<td style={{ width: "33%" }}>
-												<i class="far fa-comment"></i>{" "}
+												<i class="fas fa-tags"></i>{" "}
 											</td>
 											<td style={{ width: "33%" }}>
 												<i class="far fa-star"></i>{" "}
@@ -145,11 +162,12 @@ const SingleDessert = ({
 																className="dessertdetails-tag"
 															>
 																{e.tag}
-															</Link>{" "}
+															</Link>
+															{"  "}
 														</Badge>
 													))}
 											</td>
-											<td>Rating: {rating}</td>
+											<td>Average Rating: {rating}</td>
 										</tr>
 									</table>
 								</Col>
@@ -163,14 +181,28 @@ const SingleDessert = ({
 				<Container style={{ marginTop: "30px", marginBottom: "30px" }}>
 					<Row sm="2" xs="1">
 						<Col md={4} className="dessertdetails-reviewform">
-							<h4>Like what you had? Leave a review:</h4>
+							<h4 style={{ textAlign: "center" }}>
+								Like what you had?
+								<br />
+								Leave a review:
+							</h4>
 							<AddReviewForm />
 						</Col>
 						<Col md={8}>
-							<h4>Other Users' Reviews</h4>
+							<h2 style={{ textAlign: "center" }}>Reviews</h2>
 							{reviews &&
 								reviews.map((item) => (
-									<ReviewCard review={item} key={item.id} />
+									<Col
+										sm={8}
+										md={6}
+										lg={4}
+										style={{ textAlign: "center" }}
+									>
+										<ReviewCard
+											review={item}
+											key={item._id}
+										/>
+									</Col>
 								))}
 						</Col>
 					</Row>

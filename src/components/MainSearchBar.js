@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation, Link } from "react-router-dom";
-import { InputGroup, InputGroupAddon, InputGroupText, Input } from "reactstrap";
-import { Form, FormControl, Button, Row } from "react-bootstrap";
+import {
+	InputGroup,
+	InputGroupAddon,
+	InputGroupText,
+	Input,
+	Button,
+} from "reactstrap";
+import { Form, FormControl, Row, Col } from "react-bootstrap";
 
 const QUERYSTR_PREFIX = "q";
 
@@ -43,32 +49,54 @@ const MainSearchBar = () => {
 	return (
 		<>
 			<Row>
-				<Form inline onSubmit={(e) => searchByKeyword(e)}>
-					<InputGroup>
-						<InputGroupAddon addonType="prepend">
-							<InputGroupText>
-								<i className="fa fa-search"></i>
-							</InputGroupText>
-						</InputGroupAddon>
-						<Input
-							placeholder="Enter a delicious dessert item here"
-							type="text"
-							onChange={(e) => setKeyword(e.target.value)}
-						></Input>
-					</InputGroup>
-					{/* <span>in</span>
+				<Col float="center">
+					<Form
+						inline
+						style={{
+							verticalAlign: "middle",
+							justifyContent: "center",
+						}}
+						onSubmit={(e) => searchByKeyword(e)}
+					>
+						<InputGroup style={{ marginRight: "10px" }}>
+							<InputGroupAddon addonType="prepend">
+								<InputGroupText style={{ width: "50px" }}>
+									<i className="fa fa-search"></i>
+								</InputGroupText>
+							</InputGroupAddon>
+							<Input
+								className="main-search-bar"
+								placeholder="Enter a delicious dessert item here"
+								type="text"
+								style={{
+									backgroundColor: "white",
+									width: "300px",
+								}}
+								onChange={(e) => setKeyword(e.target.value)}
+							></Input>
+						</InputGroup>
+						{/* <span>in</span>
             <Input type="select">
                     <option>District 1</option>
                     <option>District 2</option>
                     <option>District 3</option>
             </Input>{" "} */}
-					<br />
-					<br />
-					<Button variant="outline-info" type="submit">
-						Show me the goods!
-						{/* <Link to="/search">Show me the goods!</Link> */}
-					</Button>
-				</Form>
+						<Button
+							color="info"
+							type="submit"
+							className="main-search-bar-submit"
+							style={{
+								margin: "0",
+								position: "relative",
+								top: "-5px",
+								borderRadius: "20px",
+							}}
+						>
+							Show me the goods!
+							{/* <Link to="/search">Show me the goods!</Link> */}
+						</Button>
+					</Form>
+				</Col>
 			</Row>
 		</>
 	);

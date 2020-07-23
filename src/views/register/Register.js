@@ -43,7 +43,7 @@ const Register = ({ token }) => {
 					userRole,
 				}),
 			};
-			fetch("http://localhost:5000/user", requestOptions)
+			fetch("${BACKEND_URL}user", requestOptions)
 				.then((response) => response.json())
 				.then((data) => {
 					console.log(data);

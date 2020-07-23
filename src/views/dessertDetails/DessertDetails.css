@@ -2,6 +2,20 @@
     text-align: center;
 }
 
+.dessertdetails-picture-col{
+    display: inline-block; 
+    overflow: hidden; 
+}
+
+.dessertdetails-picture-col img {
+    display: block; 
+    transition: .4s ease-in-out;
+}
+
+.dessertdetails-picture-col:hover img {
+    transform: scale(1.1);
+}  
+
 .dessertdetails-tag{
     color: white;
     text-decoration: none;
@@ -19,5 +33,11 @@
 }
 
 .dessertdetails-reviewform{
-    background-color: lightgray;
+    /* background-image: linear-gradient(to bottom right, #3a9dcc, #1f6593, #0d3f67); */
+    height: 500px;
+    /* -webkit-box-shadow: 0 4px 12px #333;
+	-moz-box-shadow: 0 4px 12px #333;
+	box-shadow: 0 4px 12px #333; */
+    background-color: #fafbfd;
+    border-radius: 20px;
 }

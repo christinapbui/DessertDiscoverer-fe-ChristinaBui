@@ -21,6 +21,13 @@
   cursor: pointer;
 }
 
+.dessertcard-card.noshadow{
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+  box-shadow: none;
+  border: .5px solid lightgray;
+}
+
 .dessertcard-cardbody{
   padding-top: 0px;
 }
@@ -71,8 +78,25 @@
   transform: scale(1.1);
 }
 
+.container.inputForm{
+  /* align-items: flex-start; */
+  color: black;
+}
+
+.inputForm-title{
+  width: 50px;
+}
+
+.main-search-bar{
+  background-color: white;
+  width: 200px;
+}
+
 .navbar{
   margin-bottom: 0px!important;
+  position: fixed; 
+  top: 0; 
+  width: 100%;
 }
 
 .navbar-link{
@@ -181,6 +205,18 @@
     top: 0;
     content: ""; 
   }
+
+.reviewcard-card.noshadow{
+  -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+  box-shadow: none;
+  border-bottom: .5px solid gray;
+}
+
+.reviewcard-title{
+  margin-top: 0px;
+  padding-top: 0px;
+}
 
 .showalldesserts-container{
   margin-top: 30px;

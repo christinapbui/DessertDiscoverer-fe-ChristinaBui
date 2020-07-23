@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { Button } from "reactstrap";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import "../App.css";
+import { BACKEND_URL } from "../appConstant";
 
 const AddReview = () => {
 	const [reviewOfDessert, setReviewOfDessert] = useState(""); //NEED HELP W/THIS
@@ -9,19 +11,21 @@ const AddReview = () => {
 	const [body, setBody] = useState("");
 	const [rating, setRating] = useState(0); // NEED HELP W/THIS
 	const [user, setUser] = useState("");
+	const { id } = useParams();
 	let history = useHistory();
 
 	const createReview = async (e) => {
 		e.preventDefault();
+
 		const reviewData = {
-			reviewOfDessert,
+			reviewOfDessert: id,
 			title,
 			body,
 			rating,
 			user,
 		};
 
-		const newReview = await fetch("http://localhost:5000/reviews/add", {
+		const newReview = await fetch(`${BACKEND_URL}desserts/${id}/reviews/`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -31,7 +35,8 @@ const AddReview = () => {
 		});
 		const response = await newReview.json();
 		console.log("review data: ", response);
-		history.push(`/reviews/${response._id}`);
+		// history.push(`/reviews/${response._id}`);
+		document.location.reload();
 		// alert("Your dessert has been added!");
 		// setName("");
 		// setPictureUrl("");
@@ -49,13 +54,19 @@ const AddReview = () => {
 			<h3>Write a new review!!!!</h3>
 			<hr /> */}
 
-			<Form className="container inputForm" onSubmit={createReview}>
+			<Form
+				className="container inputForm"
+				onSubmit={createReview}
+				// style={{ maxWidth: "100px" }}
+			>
 				<Form.Group controlId="title">
 					<Form.Label>Title</Form.Label>
 					<Form.Control
 						type="text"
 						value={title}
 						placeholder="Give your review a title"
+						className="inputForm-title"
+						style={{ width: "315px" }}
 						onChange={(e) => setTitle(e.target.value)}
 					/>
 				</Form.Group>
@@ -67,6 +78,7 @@ const AddReview = () => {
 						rows="3"
 						value={body}
 						placeholder="What do you want to say about this item?"
+						style={{ width: "315px" }}
 						onChange={(e) => setBody(e.target.value)}
 					/>
 				</Form.Group>
@@ -76,6 +88,7 @@ const AddReview = () => {
 					<Form.Control
 						type="number"
 						value={rating}
+						style={{ width: "315px" }}
 						onChange={(e) => setRating(e.target.value)}
 					/>
 				</Form.Group>

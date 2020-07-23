@@ -12,6 +12,7 @@ import DessertCard from "../../components/DessertCard";
 import { Container, Button } from "react-bootstrap";
 import AddDessert from "../addDessert/AddDessert";
 import MainSearchBar from "../../components/MainSearchBar";
+import { BACKEND_URL } from "../../appConstant";
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -24,7 +25,7 @@ const ShowAllSellers = (props) => {
 	let dispatch = useDispatch();
 
 	const getDesserts = async () => {
-		let data = await fetch(`http://localhost:5000/desserts`);
+		let data = await fetch(`${BACKEND_URL}desserts`);
 		let results = await data.json();
 
 		setDessertList(results.data);

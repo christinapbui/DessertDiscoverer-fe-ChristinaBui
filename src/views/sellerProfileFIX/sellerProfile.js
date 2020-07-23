@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from "react-router-dom";
 
 const AddDessert = () => {
 	const [name, setName] = useState("");
@@ -11,7 +11,7 @@ const AddDessert = () => {
 	const [tags, setTags] = useState([]);
 	const [seller, setSeller] = useState("");
 
-    let history = useHistory();
+	let history = useHistory();
 	const createDessert = async (e) => {
 		e.preventDefault();
 		const dessertData = {
@@ -23,20 +23,19 @@ const AddDessert = () => {
 			tags,
 			seller,
 		};
-        
-        
-		const newDessert = await fetch("http://localhost:5000/desserts", {
+
+		const newDessert = await fetch("${BACKEND_URL}desserts", {
 			method: "POST",
 			headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem('token'),
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + localStorage.getItem("token"),
 			},
 			body: JSON.stringify(dessertData),
-        });
-        const response = await newDessert.json();
-        console.log("dessert data: ", response);
-        history.push(`/dessert/${response._id}`);
-            // alert("Your dessert has been added!");
+		});
+		const response = await newDessert.json();
+		console.log("dessert data: ", response);
+		history.push(`/dessert/${response._id}`);
+		// alert("Your dessert has been added!");
 		// setName("");
 		// setPictureUrl("");
 		// setPrice(0);
@@ -87,7 +86,7 @@ const AddDessert = () => {
 					<Form.Control
 						type="text"
 						value={tags}
-						onChange={(e) => setTags(e.target.value.split(','))}
+						onChange={(e) => setTags(e.target.value.split(","))}
 					/>
 				</Form.Group>
 

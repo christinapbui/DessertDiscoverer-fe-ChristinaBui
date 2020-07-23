@@ -14,7 +14,7 @@ const DessertDetails = ({ text, type, placeholder, children, ...props }) => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const data = await fetch("http://localhost:5000/desserts/" + id);
+			const data = await fetch("${BACKEND_URL}desserts/" + id);
 			const details = await data.json();
 			console.log("dessert details: ", details);
 			setDetails(details);

@@ -14,7 +14,7 @@ function LandingPageHeader() {
 	React.useEffect(() => {
 		if (window.innerWidth > 991) {
 			const updateScroll = () => {
-				let windowScrollTop = window.pageYOffset / 2;
+				let windowScrollTop = window.pageYOffset / 3;
 				pageHeader.current.style.transform =
 					"translate3d(0," + windowScrollTop + "px,0)";
 			};
@@ -51,7 +51,7 @@ function LandingPageHeader() {
                 <Link to="/search">Show me the goods!</Link>
               </Button>
             </div> */}
-						<div className="text-center">
+						{/* <div className="text-center">
 							<Button
 								className="btn-icon btn-round"
 								color="info"
@@ -76,7 +76,7 @@ function LandingPageHeader() {
 							>
 								<i className="fab fa-google-plus"></i>
 							</Button>
-						</div>
+						</div> */}
 					</Container>
 				</div>
 			</div>

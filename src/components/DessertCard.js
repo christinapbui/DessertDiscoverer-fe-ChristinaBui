@@ -9,7 +9,7 @@ import {
 	CardDeck,
 } from "react-bootstrap";
 import { useHistory, Link } from "react-router-dom";
-// import "../App.css";
+import NumberFormat from "react-number-format";
 import "../App.css";
 
 const DessertCard = (props) => {
@@ -33,6 +33,7 @@ const DessertCard = (props) => {
 					minHeight: "40rem",
 					maxHeight: "50rem",
 				}}
+				className="dessertcard-card noshadow"
 			>
 				<div className="imgBox">
 					<Card.Img
@@ -70,7 +71,15 @@ const DessertCard = (props) => {
 							{props.dessert.description}
 						</p>
 						<br />
-						<h6>Price: {props.dessert.price} VND</h6>
+						<h6>
+							Price:{" "}
+							<NumberFormat
+								value={props.dessert.price}
+								displayType={"text"}
+								thousandSeparator={true}
+							/>{" "}
+							VND
+						</h6>
 						<br />
 						{props.dessert.tags.map((item) => (
 							<Badge variant="info">{item.tag}</Badge>

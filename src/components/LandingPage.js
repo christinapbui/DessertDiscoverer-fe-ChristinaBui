@@ -5,6 +5,7 @@ import FeaturedGoodies from "./FeaturedGoodies";
 import FeaturedSellers from "./FeaturedSellers";
 import LandingBestDesserts from "./LandingBestDesserts";
 import LandingPageHeader from "./LandingPageHeader";
+import Footer from "./Footer";
 // import LandingBestDesserts from "./components/LandingBestDesserts";
 
 const LandingPage = () => {
@@ -35,6 +36,7 @@ const LandingPage = () => {
 			</div>
 			<FeaturedGoodies />
 			<FeaturedSellers />
+			<Footer />
 		</>
 	);
 };

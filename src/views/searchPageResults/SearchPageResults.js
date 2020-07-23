@@ -4,8 +4,8 @@ import { Container, Col, Row, Button } from "react-bootstrap";
 import DessertCard from "../../components/DessertCard";
 import "./SearchPageResults.css";
 import MainSearchBar from "../../components/MainSearchBar";
-
-const QUERYSTR_PREFIX = "q";
+import { BACKEND_URL } from "../../appConstant";
+// const QUERYSTR_PREFIX = "q";
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -13,15 +13,13 @@ function useQuery() {
 
 const SearchPageResults = (props) => {
 	let query = useQuery();
-
-	// console.log(query.get('q'))
 	let history = useHistory();
 	const [keyword, setKeyword] = useState("");
 	let [originalList, setOriginalList] = useState([]);
 	let [filteredList, setFilteredList] = useState([]);
 
 	const getDesserts = async () => {
-		let data = await fetch(`http://localhost:5000/desserts`);
+		let data = await fetch(`${BACKEND_URL}desserts`);
 		let results = await data.json();
 		console.log("Keyword", keyword);
 		const tempList = results.data.filter(

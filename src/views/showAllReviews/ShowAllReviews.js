@@ -10,6 +10,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import ReviewCard from "../../components/ReviewCard";
 import { Container, Button } from "react-bootstrap";
+import { BACKEND_URL } from "../../appConstant";
 // import AddDessert from "../addDessert/AddDessert"
 
 function useQuery() {
@@ -23,7 +24,7 @@ const ShowAllReviews = () => {
 	// let dispatch = useDispatch()
 
 	const getReviews = async () => {
-		let data = await fetch(`http://localhost:5000/reviews`);
+		let data = await fetch(`${BACKEND_URL}reviews`);
 		let results = await data.json();
 		console.log("this is the review list: ", results);
 		setReviewList(results.data);

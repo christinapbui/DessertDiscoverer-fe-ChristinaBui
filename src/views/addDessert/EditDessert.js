@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button } from "react-bootstrap";
 import { useHistory, useParams } from "react-router-dom";
+import { BACKEND_URL } from "../../appConstant";
 
 const EditDessert = (props) => {
 	const [name, setName] = useState();
@@ -17,15 +18,16 @@ const EditDessert = (props) => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const data = await fetch("http://localhost:5000/desserts/" + id);
-			const details = await data.json();
-			console.log("dessert details: ", details);
-			setDetails(details);
-			setName(details.name);
-			setPictureUrl(details.pictureUrl);
-			setPrice(details.price);
-			setDescription(details.description);
-			setTags(details.tags.map((e) => e.tag));
+			const data = await fetch(`${BACKEND_URL}desserts/` + id);
+			const dataDetails = await data.json();
+			console.log("dessert details: ", dataDetails);
+			const oneDessertDetails = dataDetails.singleDessert;
+			setDetails(oneDessertDetails);
+			setName(oneDessertDetails.name);
+			setPictureUrl(oneDessertDetails.pictureUrl);
+			setPrice(oneDessertDetails.price);
+			setDescription(oneDessertDetails.description);
+			setTags(oneDessertDetails.tags.map((e) => e.tag));
 			// {
 			// 	props.dessert.tags.map((item) => (
 			// 		<Badge variant="info">{item.tag}</Badge>
@@ -47,17 +49,14 @@ const EditDessert = (props) => {
 			seller,
 		};
 
-		const editingDessert = await fetch(
-			`http://localhost:5000/desserts/${id}`,
-			{
-				method: "PATCH",
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: "Bearer " + localStorage.getItem("token"),
-				},
-				body: JSON.stringify(dessertData),
-			}
-		);
+		const editingDessert = await fetch(`${BACKEND_URL}desserts/${id}`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: "Bearer " + localStorage.getItem("token"),
+			},
+			body: JSON.stringify(dessertData),
+		});
 		const response = await editingDessert.json();
 		console.log("dessert data: ", response);
 		history.push(`/desserts/${response.data._id}`);

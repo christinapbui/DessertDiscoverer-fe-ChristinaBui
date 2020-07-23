@@ -25,7 +25,7 @@ const AddDessert = () => {
 			seller,
 		};
 
-		const newDessert = await fetch("http://localhost:5000/desserts/add", {
+		const newDessert = await fetch("${BACKEND_URL}desserts/add", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

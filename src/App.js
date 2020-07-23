@@ -11,8 +11,6 @@ import "./App.css";
 import Login from "./components/Login";
 import Register from "./views/register/Register";
 import LandingPage from "./components/LandingPage";
-import LandingPageHeader from "./components/LandingPageHeader";
-import LandingBestDesserts from "./components/LandingBestDesserts";
 import SearchPageResults from "./views/searchPageResults/SearchPageResults";
 import AddDessert from "./views/addDessert/AddDessert";
 import EditDessert from "./views/addDessert/EditDessert";
@@ -25,6 +23,7 @@ import ShowAllSellers from "./views/showAllSellers/ShowAllSellers";
 import SingleSellerProfile from "./views/singleSellerProfile/SingleSellerProfile";
 import FourOhFourPage from "./views/FourOhFourPage";
 import { useSelector, useDispatch } from "react-redux";
+import { BACKEND_URL } from "./appConstant";
 import logo from "./assets/img/dessert-logo-1.png";
 
 import {
@@ -60,7 +59,7 @@ function App() {
 		// 	setLoaded(true);
 		// 	return;
 		// }
-		// const res = await fetch(`http://localhost:5000/users/me`, {
+		// const res = await fetch(`${BACKEND_URL}users/me`, {
 		// 	headers: {
 		// 		authorization: `Bearer ${token}`,
 		// 		"Content-Type": "application/json",
@@ -91,7 +90,7 @@ function App() {
 
 	const logout = async () => {
 		const token = localStorage.getItem("token");
-		const res = await fetch(`http://localhost:5000/user/logout`, {
+		const res = await fetch(`${BACKEND_URL}user/logout`, {
 			method: "GET",
 			headers: {
 				"content-type": "application/json",
