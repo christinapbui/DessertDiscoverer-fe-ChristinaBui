@@ -27,16 +27,29 @@ import Footer from "./components/Footer";
 
 import {
 	Modal,
-	//   Card,
 	Button,
-	Navbar,
-	//   Row,
-	//   Container,
-	//   Col,
-	Form,
-	// FormControl,
-	//   Jumbotron,
+	// Navbar,
+	// Form,
 } from "react-bootstrap";
+import {
+	UncontrolledCollapse,
+	DropdownToggle,
+	DropdownMenu,
+	DropdownItem,
+	UncontrolledDropdown,
+	FormGroup,
+	Form,
+	Input,
+	InputGroupAddon,
+	InputGroupText,
+	InputGroup,
+	NavbarBrand,
+	Navbar,
+	NavItem,
+	NavLink,
+	Nav,
+	Container,
+} from "reactstrap";
 // import ProtectedRoute from "./utils/ProtectedRoute";
 
 function App() {
@@ -91,7 +104,7 @@ function App() {
 	const logout = async () => {
 		const token = localStorage.getItem("token");
 		const res = await fetch(
-			`${process.env.REACT_APP_BACKEND_URL}user/logout`,
+			`${process.env.REACT_APP_BACKEND_URL}users/logout`,
 			{
 				method: "GET",
 				headers: {
@@ -117,9 +130,13 @@ function App() {
 	return (
 		<>
 			<nav id="navigation">
-				<Navbar bg="dark" variant="dark" className="navbar">
+				<Navbar
+					className="bg-info navbar"
+					expand="lg"
+					style={{ color: "black" }}
+				>
 					<div className="container">
-						<Navbar.Brand>
+						<NavbarBrand>
 							<Link to="/">
 								<img
 									alt=""
@@ -148,7 +165,7 @@ function App() {
 							{/* <span className="navbar-link">
 								<Link to="/add-dessert">Add a Dessert</Link>
 							</span> */}
-						</Navbar.Brand>
+						</NavbarBrand>
 						<Form inline>
 							{localStorage.getItem("user") ? (
 								<>
