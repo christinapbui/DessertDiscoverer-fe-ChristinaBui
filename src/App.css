@@ -97,9 +97,17 @@
   position: fixed; 
   top: 0; 
   width: 100%;
+  color: black;
 }
 
 .navbar-link{
+  color: black;
+  padding-left: 10px;
+}
+
+.navbar-link:hover{
+  color: orange;
+  text-decoration: none;
   padding-left: 10px;
 }
   /* background-image: url("./assets/img/cupcakes-1-big.jpg"); */

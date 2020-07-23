@@ -79,7 +79,12 @@ const Register = ({ token }) => {
 						")",
 				}}
 			>
-				<Container className="register-form-container">
+				<Container
+					className="register-form-container"
+					fluid
+					sm={8}
+					style={{ marginLeft: "30px" }}
+				>
 					<Row className="register-form-row">
 						<Col className="register-form-col">
 							<h1 style={{ textAlign: "center" }}>
@@ -161,14 +166,14 @@ const Register = ({ token }) => {
 									value="Register"
 									style={{ maxWidth: "200px" }}
 								/>
-								<Button
+								{/* <Button
 									type="button"
 									className="btn btn-light"
 									onClick={fillFakeData}
 									style={{ maxWidth: "200px" }}
 								>
 									Example
-								</Button>
+								</Button> */}
 							</Form>
 						</Col>
 					</Row>

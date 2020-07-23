@@ -53,18 +53,19 @@ const Login = (props) => {
 			// history.push("/");
 			props.setOpenProps(false);
 			localStorage.setItem("user", JSON.stringify(user));
-			document.location.reload();
+			console.log("user object is: ", user.displayName);
+			// document.location.reload();
 		} else {
 			console.log(res);
 		}
 	};
 
-	const fillSample = () => {
-		setCredentials({
-			email: "christina2@gmail.com",
-			password: "123123",
-		});
-	};
+	// const fillSample = () => {
+	// 	setCredentials({
+	// 		email: "christina2@gmail.com",
+	// 		password: "123123",
+	// 	});
+	// };
 
 	return (
 		<Container>
@@ -110,9 +111,9 @@ const Login = (props) => {
 			<Button variant="primary" onClick={loginWithEmail}>
 				Log in!
 			</Button>
-			<Button variant="primary" onClick={fillSample}>
+			{/* <Button variant="primary" onClick={fillSample}>
 				Example
-			</Button>
+			</Button> */}
 
 			<br />
 			{/* <FacebookLogin

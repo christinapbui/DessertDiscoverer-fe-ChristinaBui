@@ -25,37 +25,13 @@ import { useSelector, useDispatch } from "react-redux";
 import logo from "./assets/img/sdd-logo.png";
 import Footer from "./components/Footer";
 
-import {
-	Modal,
-	Button,
-	// Navbar,
-	// Form,
-} from "react-bootstrap";
-import {
-	UncontrolledCollapse,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem,
-	UncontrolledDropdown,
-	FormGroup,
-	Form,
-	Input,
-	InputGroupAddon,
-	InputGroupText,
-	InputGroup,
-	NavbarBrand,
-	Navbar,
-	NavItem,
-	NavLink,
-	Nav,
-	Container,
-} from "reactstrap";
-// import ProtectedRoute from "./utils/ProtectedRoute";
+import { Modal, Button, Navbar, Nav, NavDropdown, Form } from "react-bootstrap";
 
 function App() {
 	const history = useHistory();
 	const [open, setOpen] = useState(false);
 	const [user, setUser] = useState(null);
+	const [profileName, setProfileName] = useState(null);
 	// const [credentials, setCredentials] = useState({ email: "", password: "" });
 	const [loaded, setLoaded] = useState(false);
 	const user2 = useSelector((state) => state.user);
@@ -97,10 +73,6 @@ function App() {
 		}
 	};
 
-	// const logout = () => {
-	// 	dispatch({ type: "logout" });
-	// };
-
 	const logout = async () => {
 		const token = localStorage.getItem("token");
 		const res = await fetch(
@@ -125,47 +97,65 @@ function App() {
 		}
 	};
 
+	const findUser = () => {
+		console.log("finding displayName: ", user);
+	};
+
 	if (!loaded) return <h1>Loading...</h1>;
 
 	return (
 		<>
 			<nav id="navigation">
 				<Navbar
-					className="bg-info navbar"
+					bg="light"
+					className="navbar"
 					expand="lg"
 					style={{ color: "black" }}
 				>
-					<div className="container">
-						<NavbarBrand>
-							<Link to="/">
-								<img
-									alt=""
-									src={logo}
-									width="100"
-									height="auto"
-									className="d-inline-block align-center"
-								/>
-							</Link>{" "}
-							<span style={{ paddingLeft: "10px" }}>
-								<Link to="/">Home</Link>
-							</span>
-							<span className="navbar-link">
-								<Link to="/desserts">Desserts</Link>
-							</span>
-							<span className="navbar-link">
-								<Link to="/sellers">Sellers</Link>
-							</span>
-							<span className="navbar-link">
-								<Link to="/reviews">Reviews</Link>
-							</span>
-							<span className="navbar-link">
-								<Link to="/map">Map</Link>
-							</span>
-							{/* <span className="navbar-link"><Link to="/add-review">Write a Review</Link></span> */}
-							{/* <span className="navbar-link">
-								<Link to="/add-dessert">Add a Dessert</Link>
-							</span> */}
-						</NavbarBrand>
+					{/* <div className="container"> */}
+					<Navbar.Brand>
+						<Link to="/">
+							<img
+								alt=""
+								src={logo}
+								width="100"
+								height="auto"
+								className="d-inline-block align-center"
+							/>
+						</Link>
+					</Navbar.Brand>{" "}
+					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Collapse id="basic-navbar-nav">
+						<Nav className="mr-auto">
+							<Link
+								to="/"
+								className="navbar-link"
+								style={{ color: "black" }}
+							>
+								Home
+							</Link>
+							<Link
+								to="/desserts"
+								className="navbar-link"
+								style={{ color: "black" }}
+							>
+								Desserts
+							</Link>
+							<Link
+								to="/sellers"
+								className="navbar-link"
+								style={{ color: "black" }}
+							>
+								Sellers
+							</Link>
+							<Link
+								to="/reviews"
+								className="navbar-link"
+								style={{ color: "black" }}
+							>
+								Reviews
+							</Link>
+						</Nav>
 						<Form inline>
 							{localStorage.getItem("user") ? (
 								<>
@@ -178,6 +168,30 @@ function App() {
 									>
 										Logout
 									</Button>
+									<NavDropdown
+										title={
+											user &&
+											user.map((item) => item.displayName)
+										}
+										id="basic-nav-dropdown"
+										style={{ color: "black" }}
+									>
+										<NavDropdown.Item>
+											<Link
+												// to="/profile"
+												onClick={() => findUser()}
+												style={{ color: "black" }}
+											>
+												Profile
+											</Link>
+										</NavDropdown.Item>
+										<NavDropdown.Item
+											onClick={() => logout()}
+											style={{ color: "black" }}
+										>
+											Logout
+										</NavDropdown.Item>
+									</NavDropdown>
 								</>
 							) : (
 								<>
@@ -199,7 +213,8 @@ function App() {
 								</Link>
 							</Button>
 						</Form>
-					</div>
+					</Navbar.Collapse>
+					{/* </div> */}
 				</Navbar>
 			</nav>
 

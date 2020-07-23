@@ -69,7 +69,7 @@ const AddReview = () => {
 						value={title}
 						placeholder="Give your review a title"
 						className="inputForm-title"
-						style={{ width: "315px" }}
+						// style={{ width: "315px" }}
 						onChange={(e) => setTitle(e.target.value)}
 					/>
 				</Form.Group>
@@ -81,7 +81,7 @@ const AddReview = () => {
 						rows="3"
 						value={body}
 						placeholder="What do you want to say about this item?"
-						style={{ width: "315px" }}
+						// style={{ width: "315px" }}
 						onChange={(e) => setBody(e.target.value)}
 					/>
 				</Form.Group>
@@ -91,7 +91,7 @@ const AddReview = () => {
 					<Form.Control
 						type="number"
 						value={rating}
-						style={{ width: "315px" }}
+						// style={{ width: "315px" }}
 						onChange={(e) => setRating(e.target.value)}
 					/>
 				</Form.Group>

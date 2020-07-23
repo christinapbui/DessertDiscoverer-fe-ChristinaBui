@@ -14,12 +14,13 @@
 }
 
 .form-group{
-    width: 350px;
+    /* width: 350px; */
     text-align: center;
 }
 
 .register-form-container{
     padding-top: 30px;
+    margin-left: 20px;
 }
 
 .register-form-row{
