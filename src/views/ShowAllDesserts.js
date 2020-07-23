@@ -27,7 +27,7 @@ const ShowAllDesserts = (props) => {
 	let [totalResult, setTotalResult] = useState(0);
 
 	const getDesserts = async () => {
-		let data = await fetch(`${BACKEND_URL}desserts`);
+		let data = await fetch(`${process.env.REACT_APP_BACKEND_URL}desserts`);
 		let results = await data.json();
 		console.log("this is the dessert list", results);
 		setDessertList(results.data);

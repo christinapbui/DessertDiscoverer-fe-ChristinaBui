@@ -33,13 +33,16 @@ const Login = (props) => {
 			console.log("Need email and password");
 			return;
 		}
-		const res = await fetch(`${BACKEND_URL}user/login`, {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify(credentials),
-		});
+		const res = await fetch(
+			`${process.env.REACT_APP_BACKEND_URL}user/login`,
+			{
+				method: "POST",
+				headers: {
+					"content-type": "application/json",
+				},
+				body: JSON.stringify(credentials),
+			}
+		);
 
 		if (res.ok) {
 			const data2 = await res.json();

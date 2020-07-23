@@ -14,7 +14,9 @@ const SellerProfile = ({ text, type, placeholder, children, ...props }) => {
 		// setId(props.params.id);
 
 		async function fetchData() {
-			const data = await fetch("${BACKEND_URL}users/" + id);
+			const data = await fetch(
+				`${process.env.REACT_APP_BACKEND_URL}users/` + id
+			);
 			const details = await data.json();
 			console.log(details);
 			setDetails(details);

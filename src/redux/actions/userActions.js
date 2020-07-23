@@ -22,7 +22,7 @@ const fetchUser = () => async (dispatch) => {
 		dispatch({ type: "APP_LOADED" });
 		return;
 	}
-	const res = await fetch(`${BACKEND_URL}users/me`, {
+	const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}users/me`, {
 		method: "GET",
 		headers: {
 			"content-type": "application/json",

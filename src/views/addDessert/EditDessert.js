@@ -18,7 +18,9 @@ const EditDessert = (props) => {
 
 	useEffect(() => {
 		async function fetchData() {
-			const data = await fetch(`${BACKEND_URL}desserts/` + id);
+			const data = await fetch(
+				`${process.env.REACT_APP_BACKEND_URL}desserts/` + id
+			);
 			const dataDetails = await data.json();
 			console.log("dessert details: ", dataDetails);
 			const oneDessertDetails = dataDetails.singleDessert;
@@ -49,14 +51,17 @@ const EditDessert = (props) => {
 			seller,
 		};
 
-		const editingDessert = await fetch(`${BACKEND_URL}desserts/${id}`, {
-			method: "PATCH",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + localStorage.getItem("token"),
-			},
-			body: JSON.stringify(dessertData),
-		});
+		const editingDessert = await fetch(
+			`${process.env.REACT_APP_BACKEND_URL}desserts/${id}`,
+			{
+				method: "PATCH",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + localStorage.getItem("token"),
+				},
+				body: JSON.stringify(dessertData),
+			}
+		);
 		const response = await editingDessert.json();
 		console.log("dessert data: ", response);
 		history.push(`/desserts/${response.data._id}`);

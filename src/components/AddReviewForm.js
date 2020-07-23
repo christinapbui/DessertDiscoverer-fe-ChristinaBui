@@ -25,14 +25,17 @@ const AddReview = () => {
 			user,
 		};
 
-		const newReview = await fetch(`${BACKEND_URL}desserts/${id}/reviews/`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + localStorage.getItem("token"),
-			},
-			body: JSON.stringify(reviewData),
-		});
+		const newReview = await fetch(
+			`${process.env.REACT_APP_BACKEND_URL}desserts/${id}/reviews/`,
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + localStorage.getItem("token"),
+				},
+				body: JSON.stringify(reviewData),
+			}
+		);
 		const response = await newReview.json();
 		console.log("review data: ", response);
 		// history.push(`/reviews/${response._id}`);

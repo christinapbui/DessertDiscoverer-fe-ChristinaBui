@@ -24,7 +24,7 @@ const ShowAllReviews = () => {
 	// let dispatch = useDispatch()
 
 	const getReviews = async () => {
-		let data = await fetch(`${BACKEND_URL}reviews`);
+		let data = await fetch(`${process.env.REACT_APP_BACKEND_URL}reviews`);
 		let results = await data.json();
 		console.log("this is the review list: ", results);
 		setReviewList(results.data);

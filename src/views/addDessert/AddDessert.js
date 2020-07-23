@@ -25,14 +25,17 @@ const AddDessert = () => {
 			seller,
 		};
 
-		const newDessert = await fetch("${BACKEND_URL}desserts/add", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: "Bearer " + localStorage.getItem("token"),
-			},
-			body: JSON.stringify(dessertData),
-		});
+		const newDessert = await fetch(
+			process.env.REACT_APP_BACKEND_URL + "desserts/add",
+			{
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + localStorage.getItem("token"),
+				},
+				body: JSON.stringify(dessertData),
+			}
+		);
 		const response = await newDessert.json();
 		console.log("dessert data: ", response);
 		history.push(`/desserts/${response._id}`);

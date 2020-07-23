@@ -43,7 +43,7 @@ const Register = ({ token }) => {
 					userRole,
 				}),
 			};
-			fetch("${BACKEND_URL}user", requestOptions)
+			fetch(`${process.env.REACT_APP_BACKEND_URL}user`, requestOptions)
 				.then((response) => response.json())
 				.then((data) => {
 					console.log(data);

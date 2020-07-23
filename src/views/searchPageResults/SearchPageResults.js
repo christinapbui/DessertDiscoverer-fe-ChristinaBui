@@ -19,7 +19,7 @@ const SearchPageResults = (props) => {
 	let [filteredList, setFilteredList] = useState([]);
 
 	const getDesserts = async () => {
-		let data = await fetch(`${BACKEND_URL}desserts`);
+		let data = await fetch(`${process.env.REACT_APP_BACKEND_URL}desserts`);
 		let results = await data.json();
 		console.log("Keyword", keyword);
 		const tempList = results.data.filter(

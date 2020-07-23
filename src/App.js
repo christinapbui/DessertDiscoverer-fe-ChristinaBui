@@ -90,13 +90,16 @@ function App() {
 
 	const logout = async () => {
 		const token = localStorage.getItem("token");
-		const res = await fetch(`${BACKEND_URL}user/logout`, {
-			method: "GET",
-			headers: {
-				"content-type": "application/json",
-				authorization: `Bearer ${token}`,
-			},
-		});
+		const res = await fetch(
+			`${process.env.REACT_APP_BACKEND_URL}user/logout`,
+			{
+				method: "GET",
+				headers: {
+					"content-type": "application/json",
+					authorization: `Bearer ${token}`,
+				},
+			}
+		);
 
 		if (res.ok) {
 			setUser(null);
