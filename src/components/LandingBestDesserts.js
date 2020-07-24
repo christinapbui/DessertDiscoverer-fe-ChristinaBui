@@ -23,7 +23,7 @@ const LandingBestDesserts = () => {
 						<Card style={{ width: "18rem" }}>
 							<CardImg
 								alt="..."
-								src="https://joyfoodsunshine.com/wp-content/uploads/2016/01/best-chocolate-chip-cookies-recipe-ever-no-chilling-1-e1549147195343.jpg"
+								src="https://www.missjones.co/wp-content/uploads/2018/06/Edited1-9851-squarewb.jpg"
 								top
 								style={{
 									height: "18rem",
@@ -33,8 +33,8 @@ const LandingBestDesserts = () => {
 							<CardBody>
 								{/* <blockquote className="blockquote blockquote-primary mb-0"> */}
 								<CardText style={{ marginBottom: "-15px" }}>
-									<Link to="/search/?q=cookies">
-										<h3>Cookies</h3>
+									<Link to="/search/?q=tart">
+										<h3>Tarts</h3>
 									</Link>
 								</CardText>
 								{/* </blockquote> */}
@@ -65,7 +65,7 @@ const LandingBestDesserts = () => {
 						<Card style={{ width: "18rem" }}>
 							<CardImg
 								alt="..."
-								src="https://img.taste.com.au/gOpVgvz8/taste/2016/11/classic-chewy-brownie-102727-1.jpeg"
+								src="https://food.fnr.sndimg.com/content/dam/images/food/fullset/2006/8/4/0/gl0605_mousse1.jpg.rend.hgtvcom.826.620.suffix/1580237750820.jpeg"
 								top
 								style={{
 									height: "18rem",
@@ -74,8 +74,8 @@ const LandingBestDesserts = () => {
 							></CardImg>
 							<CardBody>
 								<CardText style={{ marginBottom: "-15px" }}>
-									<Link to="/search/?q=brownie">
-										<h3>Brownies</h3>
+									<Link to="/search/?q=mousse">
+										<h3>Mousse</h3>
 									</Link>
 								</CardText>
 							</CardBody>

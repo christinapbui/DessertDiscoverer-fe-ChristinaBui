@@ -53,8 +53,8 @@ const Login = (props) => {
 			// history.push("/");
 			props.setOpenProps(false);
 			localStorage.setItem("user", JSON.stringify(user));
-			console.log("user object is: ", user.displayName);
-			// document.location.reload();
+			// console.log("user object is: ", user.displayName);
+			document.location.reload();
 		} else {
 			console.log(res);
 		}

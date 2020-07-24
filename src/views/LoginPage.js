@@ -84,8 +84,10 @@ const LoginPage = (props) => {
 					Log in!
 				</Button>
 				<p>
-					Don't have an account yet?{" "}
-					<Link to="/register">Register here.</Link>
+					<small>
+						Don't have an account yet?{" "}
+						<Link to="/register">Register here.</Link>
+					</small>
 				</p>
 			</Col>
 		</Container>
