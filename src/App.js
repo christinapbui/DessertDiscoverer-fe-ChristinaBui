@@ -210,9 +210,7 @@ function App() {
 								variant="danger"
 								style={{ textDecoration: "none" }}
 							>
-								<Link to="/add-dessert">
-									Add your baked good
-								</Link>
+								<Link to="/add-dessert">Add your dessert</Link>
 							</Button>
 						</Form>
 					</Navbar.Collapse>
