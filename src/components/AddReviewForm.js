@@ -52,15 +52,10 @@ const AddReview = () => {
 
 	return (
 		<>
-			{/* <div style={{ height: "50px" }}></div>
-			<br />
-			<h3>Write a new review!!!!</h3>
-			<hr /> */}
-
 			<Form
 				className="container inputForm"
 				onSubmit={createReview}
-				// style={{ maxWidth: "100px" }}
+				style={{ textAlign: "center" }}
 			>
 				<Form.Group controlId="title">
 					<Form.Label>Title</Form.Label>
@@ -96,7 +91,7 @@ const AddReview = () => {
 					/>
 				</Form.Group>
 
-				<Button color="success" type="submit">
+				<Button color="danger" type="submit">
 					Submit
 				</Button>
 			</Form>

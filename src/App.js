@@ -195,7 +195,7 @@ function App() {
 							) : (
 								<>
 									<Button
-										variant="danger"
+										variant="success"
 										onClick={() => setOpen(!open)}
 									>
 										Login

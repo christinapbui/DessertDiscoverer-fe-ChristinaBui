@@ -42,10 +42,12 @@ const DessertDetails = ({ text, type, placeholder, children, ...props }) => {
 			></div>
 			<br />
 			{/* <h1>Details of Dessert </h1>{" "} */}
-			<Button variant="secondary" onClick={() => editDessert()}>
-				Edit
-			</Button>
 			<SingleDessert {...details} />
+			<Container style={{ textAlign: "center" }}>
+				<Button variant="secondary" onClick={() => editDessert()}>
+					Edit this dessert
+				</Button>
+			</Container>
 		</>
 	);
 };
@@ -199,14 +201,14 @@ const SingleDessert = ({
 							</h4>
 							<AddReviewForm />
 						</Col>
-						<Col md={8}>
+						<Col>
 							<h2 style={{ textAlign: "center" }}>Reviews</h2>
 							{reviews &&
 								reviews.map((item) => (
 									<Col
-										sm={8}
-										md={6}
-										lg={4}
+										// sm={8}
+										// md={6}
+										// lg={8}
 										style={{ textAlign: "center" }}
 									>
 										<ReviewCard
