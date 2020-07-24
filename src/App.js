@@ -36,6 +36,7 @@ function App() {
 	const [loaded, setLoaded] = useState(false);
 	const user2 = useSelector((state) => state.user);
 	let dispatch = useDispatch();
+	// const getDisplayName = localStorage.getItem("user");
 
 	useEffect(() => {
 		fetchUser();
@@ -102,6 +103,7 @@ function App() {
 	};
 
 	if (!loaded) return <h1>Loading...</h1>;
+	// if (getDisplayName) return;
 
 	return (
 		<>
@@ -159,19 +161,16 @@ function App() {
 						<Form inline>
 							{localStorage.getItem("user") ? (
 								<>
-									<Button variant="warning">
-										<Link to="/profile">Profile</Link>
-									</Button>
 									<Button
 										variant="secondary"
 										onClick={() => logout()}
 									>
 										Logout
 									</Button>
-									<NavDropdown
+									{/* <NavDropdown
 										title={
-											user &&
-											user.map((item) => item.displayName)
+											localStorage.getItem("user")
+												.displayName
 										}
 										id="basic-nav-dropdown"
 										style={{ color: "black" }}
@@ -191,7 +190,7 @@ function App() {
 										>
 											Logout
 										</NavDropdown.Item>
-									</NavDropdown>
+									</NavDropdown> */}
 								</>
 							) : (
 								<>
@@ -207,7 +206,10 @@ function App() {
 								</>
 							)}
 
-							<Button variant="outline-primary">
+							<Button
+								variant="danger"
+								style={{ textDecoration: "none" }}
+							>
 								<Link to="/add-dessert">
 									Add your baked good
 								</Link>

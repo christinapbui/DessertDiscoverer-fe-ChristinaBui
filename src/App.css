@@ -123,22 +123,12 @@
   height: auto;
 } */
 .jumbo-landing-best-desserts{
-  margin-top: 50px;
-  background-color: white;
+  padding-top: 50px;
+  background-color: red;
   height: 90vh;
+  /* padding: 20px; */
 }
 
-/* .jumbo-main-text {
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  top: 300px;
-  left: 200px;
-  background-color: rgba(0,0,0,.5);
-  color: white;
-  font-size: 36px;
-  padding: 20px;
-} */
 
 .landingparallex-maintext{
   /* padding-top: 50px;

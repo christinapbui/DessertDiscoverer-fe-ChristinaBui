@@ -42,10 +42,10 @@ function LandingPageHeader() {
 					<Container>
 						<h1 className="title">Saigon Dessert Discoverer</h1>
 						<h3 className="text-center">What are you craving?</h3>
-						<div>
+						<div style={{ paddingBottom: "10px" }}>
 							I'm looking for
-							<MainSearchBar />
 						</div>
+						<MainSearchBar />
 						{/* <div>in <LocationDropdown />{" "}
               <Button>
                 <Link to="/search">Show me the goods!</Link>
